@@ -1,0 +1,37 @@
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 30%;
+}
+
+.image {
+    background: rgb(237,193,211);
+    background: linear-gradient(180deg, #884CB2 0%, #FD648E 100%);
+
+    border-radius: 10em;
+}
+
+.image > img {
+    width: 36px;
+    height: 36px;
+
+    margin: 2px;
+    border-radius: 10em;
+    border: white 2px solid;
+}
+
+.icon {
+    margin-right: 10px;
+    border-right: lightgray 1px solid;
+    padding-right: 10px;
+}
+
+.menu {
+    min-width: 250px;
+}
+
+.information {
+    text-align: center;
+}

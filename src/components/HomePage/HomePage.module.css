@@ -1,0 +1,29 @@
+.main {
+    width: 1200px;
+    height: 700px;
+    padding: 0 20px;
+}
+
+.header {
+    height: 50px;
+    display: flex;
+    margin-bottom: 0px;
+}
+
+.body {
+    height: calc(100% - 50px);
+    display: flex;
+}
+
+.mainContent {
+    height: 100%;
+    width: 70%;
+    overflow-y: auto;
+}
+
+.message {
+    height: 100%;
+    width: 30%;
+
+    display: flex;
+}

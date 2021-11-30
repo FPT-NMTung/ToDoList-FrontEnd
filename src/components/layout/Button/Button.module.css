@@ -1,0 +1,20 @@
+.button {
+  padding: 8px 18px;
+  background-color: #a045e1;
+
+  outline: none;
+
+  border: none;
+  border-radius: 10px;
+
+  color: white;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: #a2a2a2;
+  color: #ffffff;
+  cursor: no-drop;
+}

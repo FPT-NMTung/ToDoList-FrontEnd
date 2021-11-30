@@ -1,0 +1,60 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  height: 350px;
+  width: 500px;
+
+  max-width: 520px;
+  text-align: center;
+  line-height: 1.4;
+
+  padding: 0px 30px;
+
+  .text {
+    font-size: 80px;
+  }
+
+  .notFound-404 {
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 100px;
+      font-weight: 700;
+      margin: 0px;
+      color: #232323;
+
+      span {
+        display: inline-block;
+        width: 120px;
+        height: 120px;
+        background-size: cover;
+        -webkit-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+        transform: scale(1.4);
+        z-index: -1;
+      }
+    }
+  }
+
+  a {
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px 30px;
+    font-weight: 700;
+    background-color: #884CB2;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+
+    width: max-content;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+}
+

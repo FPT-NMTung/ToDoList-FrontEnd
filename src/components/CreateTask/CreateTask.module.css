@@ -1,0 +1,45 @@
+.body {
+    height: 100px;
+    width: 100px;
+}
+
+.buttonOk {
+    background-color: #884CB2;
+    outline: none;
+
+    border-width: 0;
+    border-radius: 6px;
+
+    cursor: pointer;
+    color: white;
+    padding: 6px 18px;
+}
+
+.imageSelect {
+    margin-right: 6px;
+    height: 12px;
+    width: 12px;
+}
+
+.select {
+    display: flex;
+    align-items: center;
+}
+
+.addUser {
+    display: flex;
+}
+
+.listMember {
+    padding: 0;
+}
+
+.listMember > li {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.listMember > li > div {
+    margin-left: 10px;
+}

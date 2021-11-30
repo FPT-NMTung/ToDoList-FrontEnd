@@ -1,0 +1,103 @@
+.main {
+
+}
+
+.loading {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    color: black;
+}
+
+.title {
+    font-weight: 800;
+    font-kerning: none;
+    margin: 0;
+}
+
+.highlightTitle {
+    color: #F3477A;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+}
+
+.titleTasks {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 12px 0 12px 0;
+    font-weight: bold;
+}
+
+.listTasks {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.listTasksCompleted {
+    /*opacity: 50%;*/
+}
+
+.element {
+    display: flex;
+    align-items: center;
+}
+
+.element > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 13% 13% 20% 4%;
+}
+
+.mainTableContain {
+    margin-left: 10px;
+}
+
+.tabMenu {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabMenu > div {
+    display: flex;
+    align-items: center;
+}
+
+.tabMenuElement {
+    display: flex;
+    align-items: center;
+
+    padding: 6px 9px;
+    border-radius: 10em;
+    border: 1px solid #efefef;
+    transition: 0.3s ease-in-out;
+    color: #232323;
+}
+
+.tabMenuElement:hover {
+    background-color: #eeeeee;
+    color: #232323;
+}
+
+.tabMenuContent {
+    margin-left: 6px;
+}
+
+.scrollBar {
+    display: block;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

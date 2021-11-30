@@ -1,0 +1,31 @@
+.main {
+    height: 100%;
+}
+
+.link {
+    color: black;
+}
+
+.mainForm {
+    display: flex;
+    justify-content: center;
+}
+
+.mainForm > form {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.input {
+    margin: 6px 20px;
+    padding: 10px 20px;
+
+    border-radius: 10em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgray;
+
+    outline: none;
+
+    width: 300px;
+}

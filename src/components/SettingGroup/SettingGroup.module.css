@@ -1,0 +1,48 @@
+
+
+.tabMenu {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabMenu > div {
+    display: flex;
+    align-items: center;
+}
+
+.tabMenuElement {
+    display: flex;
+    align-items: center;
+
+    padding: 6px 9px;
+    border-radius: 10em;
+    border: 1px solid #efefef;
+    transition: 0.3s ease-in-out;
+    color: #232323;
+}
+
+.tabMenuElement:hover {
+    background-color: #eeeeee;
+    color: #232323;
+}
+
+.tabMenuContent {
+    margin-left: 6px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 150px auto;
+
+    height: 100%;
+}
+
+.content {
+    background-color: #ffffff;
+    margin-left: 20px;
+}
+
+.body {
+    height: calc(100% - 50px);
+}

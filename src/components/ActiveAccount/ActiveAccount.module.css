@@ -1,0 +1,18 @@
+.main {
+    text-align: center;
+}
+
+.content {
+    margin-bottom: 30px;
+}
+
+.title {
+    color: #09b400;
+}
+
+.alert {
+    position: fixed !important;
+    bottom: 10px;
+    right: 10px;
+    min-width: 300px;
+}

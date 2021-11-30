@@ -1,0 +1,30 @@
+.main {
+    position: relative;
+}
+
+.titleInput {
+    display: inline-block;
+    width: 150px;
+}
+
+.input {
+    margin-right: 10px;
+
+    padding: 6px 20px;
+
+    border-radius: 10em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgray;
+
+    outline: none;
+
+    width: 300px;
+}
+
+.alert {
+    position: fixed !important;
+    bottom: 10px;
+    right: 10px;
+    min-width: 300px;
+}
