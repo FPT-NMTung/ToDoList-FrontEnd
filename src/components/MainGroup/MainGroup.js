@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom'
 import io from 'socket.io-client'
 import Button from '../layout/Button/Button'
 import Tasks from './Tasks/Tasks'
-import CreateTask from '../CreateTask/CreateTask'
+import CreateTask from './CreateTask/CreateTask'
 import { LeftCircleOutlined, SettingOutlined } from '@ant-design/icons'
 
 const MainGroup = props => {

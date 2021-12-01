@@ -1,7 +1,7 @@
 import { Divider, List } from 'antd'
 import classes from './GeneralSetting.module.css'
-import FetchApi from '../../../apis/FetchApi'
-import { GroupApi } from '../../../apis/ListApis'
+import FetchApi from '../../../../apis/FetchApi'
+import { GroupApi } from '../../../../apis/ListApis'
 import { useHistory } from 'react-router-dom'
 
 const GeneralSetting = props => {

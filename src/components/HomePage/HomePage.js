@@ -11,7 +11,7 @@ import { UserApi } from '../../apis/ListApis'
 import Message from '../Message/Message'
 import CreateGroup from '../CreateGroup/CreateGroup'
 import MainGroup from '../MainGroup/MainGroup'
-import SettingGroup from '../SettingGroup/SettingGroup'
+import SettingGroup from '../MainGroup/SettingGroup/SettingGroup'
 
 const HomePage = () => {
   const [name, setName] = useState('')

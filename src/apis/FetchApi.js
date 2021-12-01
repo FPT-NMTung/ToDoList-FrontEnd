@@ -1,6 +1,8 @@
 const SendApi = (uri, method, context, body, callback) => {
   const endpoint_server = process.env.REACT_APP_ENDPOINT_SERVER
 
+  console.log(`${endpoint_server}${uri}`)
+
   fetch(`${endpoint_server}${uri}`,
     {
       method: method,

@@ -40,3 +40,7 @@ code {
 .ant-menu-item-active {
   color: #232323 !important;
 }
+
+.ant-form-inline .ant-form-item-with-help {
+  margin-bottom: 0px !important;
+}
