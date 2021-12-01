@@ -65,7 +65,7 @@ const Register = props => {
     }
 
     if (email.trim().includes('@') && password.trim().length >= 8 && name.trim().length > 0) {
-      FetchApi(UserApi.create, 'POST', 'application/json', body, (status, data) => {
+      FetchApi(UserApi.create, 'PUT', 'application/json', body, (status, data) => {
         if (status) {
           if (data.code === 8820001) {
             setNotiStatus('success')

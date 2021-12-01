@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import FetchApi from '../../apis/FetchApi'
-import { GroupApi } from '../../apis/ListApis'
+import FetchApi from '../../../apis/FetchApi'
+import { GroupApi } from '../../../apis/ListApis'
 import { Link, useHistory } from 'react-router-dom'
 import classes from './SettingGroup.module.css'
 import { HomeOutlined, LeftCircleOutlined, TeamOutlined } from '@ant-design/icons'

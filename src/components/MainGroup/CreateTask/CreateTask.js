@@ -2,12 +2,12 @@ import { Avatar, Button, Modal } from 'antd'
 import { Fragment, useState } from 'react'
 import classes from './CreateTask.module.css'
 import { Input, Form, Select } from 'antd'
-import minorImg from '../../images/circle-green.png'
-import normalImg from '../../images/circle-yellow.png'
-import criticalImg from '../../images/circle-red.png'
+import minorImg from '../../../images/circle-green.png'
+import normalImg from '../../../images/circle-yellow.png'
+import criticalImg from '../../../images/circle-red.png'
 import { UserOutlined } from '@ant-design/icons'
-import FetchApi from '../../apis/FetchApi'
-import { TaskApi } from '../../apis/ListApis'
+import FetchApi from '../../../apis/FetchApi'
+import { TaskApi } from '../../../apis/ListApis'
 
 const layout = {
   labelCol: {span: 4},
