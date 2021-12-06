@@ -1,4 +1,3 @@
-import './Login.scss'
 import Button from '../layout/Button/Button'
 import { Link, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -6,6 +5,7 @@ import FetchApi from '../../apis/FetchApi'
 import { UserApi } from '../../apis/ListApis'
 import { Alert } from 'antd'
 import classes from './Register.module.css'
+import classesLogin from './Login.module.css'
 import Box from '../layout/Box/Box'
 
 const Login = props => {
@@ -59,12 +59,15 @@ const Login = props => {
 
       FetchApi(UserApi.login, 'POST', 'application/json', body, (status, data) => {
         if (!status) {
-          if (data.code === 8840003) {
+          if (data.code === 8840005) {
             setIsError(true)
-            setErrorMess('The email address or password is incorrect.')
-          } else if (data.code === 8840010) {
+            setErrorMess('Email or password does not exist or is not valid')
+          } else if (data.code === 8840006) {
             setIsError(true)
-            setErrorMess('You need active your account first.')
+            setErrorMess('Email or password is incorrect')
+          } else if (data.code === 8840007) {
+            setIsError(true)
+            setErrorMess('Account is not active')
           }
         } else {
           localStorage.setItem('token', data.token)
@@ -85,34 +88,34 @@ const Login = props => {
 
   return (
     <Box>
-      <div className={'login'}>
+      <div className={classesLogin.login}>
         <h2>Login Account</h2>
-        <form className={'form'} onSubmit={handleButtonClick} method={'post'}>
+        <form className={classesLogin.form} onSubmit={handleButtonClick} method={'post'}>
           <input
             type="email"
             name="email"
             placeholder={'Enter your email'}
             onChange={handleEmailInput}
             onBlur={touchEmailInput}
-            className={(!isValidEmail) ? 'invalid' : ''}
+            className={(!isValidEmail) ? `${classesLogin.invalid}` : ''}
           /><br/>
-          {!isValidEmail && <p className={'invalidText'}>Wrong email format.</p>}
+          {!isValidEmail && <p className={classesLogin.invalidText}>Wrong email format.</p>}
           <input
             type="password"
             name="password"
             placeholder={'Enter your password'}
             onChange={handlePassInput}
             onBlur={touchPasswordInput}
-            className={(!isValidPassword) ? 'invalid' : ''}
+            className={(!isValidPassword) ? `${classesLogin.invalid}` : ''}
           /><br/>
-          {!isValidPassword && <p className={'invalidText'}>Password from 8 to 50 characters.</p>}
-          <div className={'contain-button'}>
+          {!isValidPassword && <p className={classesLogin.invalidText}>Password from 8 to 50 characters.</p>}
+          <div className={classesLogin.containButton}>
             <Button onButtonClick={handleButtonClick} text={'Login'}/>
           </div>
         </form>
         <hr/>
-        <p>If you don't have an account, please <Link to={'/register'}>register</Link></p>
-        <p>You forgot password?, please <Link to={'/reset-password'}>reset password</Link></p>
+        <p>If you don't have an account, please <Link className={classes.link} to={'/register'}>register</Link></p>
+        <p>You forgot password?, please <Link className={classes.link} to={'/reset-password'}>reset password</Link></p>
         {isError &&
         <Alert
           className={classes.alert}

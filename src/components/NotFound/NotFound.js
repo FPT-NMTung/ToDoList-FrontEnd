@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import './NotFound.scss'
+import classes from './NotFound.module.css'
 import Box from '../layout/Box/Box'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -29,8 +29,8 @@ const NotFound = props => {
 
   return (
     <Box>
-      <div className="notFound">
-        <div className="notFound-404">
+      <div className={classes.notFound}>
+        <div className={classes.text}>
           <h1>404</h1>
         </div>
         <h2>Oops! Page Not Be Found</h2>
@@ -39,7 +39,7 @@ const NotFound = props => {
         <br/>
         <p>Automation back home page after: <span style={{fontWeight: 'bold'}}>{tick}s</span></p>
         <div>
-          <Link to="/">Back to homepage</Link>
+          <Link className={classes.link} to="/">Back to homepage</Link>
         </div>
       </div>
     </Box>

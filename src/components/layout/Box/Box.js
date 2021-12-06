@@ -1,8 +1,8 @@
-import './Box.scss'
+import classes from './Box.module.css';
 
 const Box = props => {
   return (
-    <div className={'box'}>
+    <div className={classes.box}>
       {props.children}
     </div>
   )

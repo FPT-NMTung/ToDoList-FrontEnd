@@ -14,9 +14,9 @@ const ResetPasswordForm = props => {
   const [passTouch, setPassTouch] = useState(false)
   const [repassTouch, setRepassTouch] = useState(false)
 
-  const [isNoti, setIsNoti] = useState()
-  const [notiMess, setNotiMess] = useState()
-  const [statusNoti, setStatusNoti] = useState()
+  const [isNoti, setIsNoti] = useState(false)
+  const [notiMess, setNotiMess] = useState('')
+  const [statusNoti, setStatusNoti] = useState('')
 
   const passIsVaild = (pass.trim().length >= 8 || !passTouch)
   const repassIsVaild = ((repass.trim().length >= 8 && pass.trim() === repass.trim()) || !repassTouch)
@@ -72,9 +72,13 @@ const ResetPasswordForm = props => {
       FetchApi(UserApi.changePasswordByReset, 'PUT', 'application/json', body, (status, data) => {
         if (status) {
           history.push('/login')
-        } else {
+        } else if (data.code === 8840018) {
           setStatusNoti('warning')
-          setNotiMess('Failed change password.')
+          setNotiMess('Token and password does not exist or is not valid')
+          setIsNoti(true)
+        } else if (data.code === 8840019) {
+          setStatusNoti('warning')
+          setNotiMess('User does not exist')
           setIsNoti(true)
         }
       })
@@ -117,15 +121,15 @@ const ResetPasswordForm = props => {
           <p>I already have a membership, please <Link className={classes.link} to={'/login'}>Login</Link></p>
 
           {isNoti &&
-          <Alert
-            className={classes.alert}
-            message={statusNoti}
-            description={notiMess}
-            type={statusNoti}
-            showIcon
-            closable
-            afterClose={handleCloseNoti}
-          />}
+            <Alert
+              className={classes.alert}
+              message={statusNoti}
+              description={notiMess}
+              type={statusNoti}
+              showIcon
+              closable
+              afterClose={handleCloseNoti}
+            />}
         </form>
       </div>
     </Box>

@@ -67,19 +67,25 @@ const Register = props => {
     if (email.trim().includes('@') && password.trim().length >= 8 && name.trim().length > 0) {
       FetchApi(UserApi.create, 'PUT', 'application/json', body, (status, data) => {
         if (status) {
-          if (data.code === 8820001) {
-            setNotiStatus('success')
-            setNotiMess('please check your email to active account')
-            setIsNoti(true)
-          }
+          setNotiStatus('success')
+          setNotiMess('please check your email to active account')
+          setIsNoti(true)
         } else {
           if (data.code === 8840001) {
             setNotiStatus('warning')
-            setNotiMess('Email is exist.')
+            setNotiMess('Name, email or password does not exist or is not valid')
             setIsNoti(true)
           } else if (data.code === 8840002) {
             setNotiStatus('warning')
-            setNotiMess('Data is invalid.')
+            setNotiMess('Name, email or password does not format')
+            setIsNoti(true)
+          } else if (data.code === 8840003) {
+            setNotiStatus('warning')
+            setNotiMess('Email is already exist')
+            setIsNoti(true)
+          } else if (data.code === 8840004) {
+            setNotiStatus('warning')
+            setNotiMess('Send mail active fail')
             setIsNoti(true)
           }
         }
@@ -132,15 +138,15 @@ const Register = props => {
 
         <p>I already have a membership, please <Link className={classes.link} to={'/login'}>Login</Link></p>
         {isNoti &&
-        <Alert
-          className={classes.alert}
-          message={statusNoti}
-          description={notiMess}
-          type={statusNoti}
-          showIcon
-          closable
-          afterClose={afterClose}
-        />}
+          <Alert
+            className={classes.alert}
+            message={statusNoti}
+            description={notiMess}
+            type={statusNoti}
+            showIcon
+            closable
+            afterClose={afterClose}
+          />}
       </div>
     </Box>
   )

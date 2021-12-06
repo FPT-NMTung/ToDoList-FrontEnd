@@ -74,16 +74,26 @@ const Setting = props => {
       console.log(status, data)
 
       if (status) {
-        if (data.code === 8820002) {
-          setStatusNoti('success')
-          setIsNoti(true)
-          setNotiMess('Change password success.')
-        }
+        setStatusNoti('success')
+        setIsNoti(true)
+        setNotiMess('Change password success.')
       } else {
-        if (data.code === 8840005) {
+        if (data.code === 8840008) {
           setStatusNoti('warning')
           setIsNoti(true)
-          setNotiMess('Old password does not match.')
+          setNotiMess('Old password or new password does not exist or is not valid')
+        } else if (data.code === 8840009) {
+          setStatusNoti('warning')
+          setIsNoti(true)
+          setNotiMess('Old password and new password are the same')
+        } else if (data.code === 8840010) {
+          setStatusNoti('warning')
+          setIsNoti(true)
+          setNotiMess('User does not exist')
+        } else if (data.code === 8840011) {
+          setStatusNoti('warning')
+          setIsNoti(true)
+          setNotiMess('Old password is incorrect')
         }
       }
     })
@@ -130,15 +140,15 @@ const Setting = props => {
             </p>
             <Button text={'Change password'}/>
             {isNoti &&
-            <Alert
-              className={classes.alert}
-              message={statusNoti}
-              description={notiMess}
-              type={statusNoti}
-              showIcon
-              closable
-              afterClose={onCloseNoti}
-            />}
+              <Alert
+                className={classes.alert}
+                message={statusNoti}
+                description={notiMess}
+                type={statusNoti}
+                showIcon
+                closable
+                afterClose={onCloseNoti}
+              />}
           </form>
         </Panel>
       </Collapse>
