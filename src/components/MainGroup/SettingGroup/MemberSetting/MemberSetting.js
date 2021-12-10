@@ -1,22 +1,91 @@
-import classes from '../GeneralSetting/GeneralSetting.module.css'
-import { Button, Divider, Form, Input, List } from 'antd'
+import { Avatar, Button, Divider, Dropdown, Form, Input, List, Menu } from 'antd'
+import FetchApi from '../../../../apis/FetchApi'
+import { GroupApi, UserApi } from '../../../../apis/ListApis'
+import { useEffect, useState } from 'react'
+import classes from './MemberSetting.module.css'
+import optionImg from '../../../../images/dot-option.png'
 
 const MemberSetting = props => {
-  const data = [
-    <div>
-      alo
-    </div>,
-  ]
+  const idGroups = props.match.params.idGroups
+  const [listMember, setListMember] = useState([])
+  const [isOwner, setIsOwner] = useState(false)
+
+  const handleDeleteMember = (idUsers) => {
+    FetchApi(GroupApi.deleteMember, 'DELETE', 'application/json', {
+      idGroups: idGroups,
+      idUsersMember: idUsers
+    }, (status) => {
+      if (status) {
+        FetchApi(GroupApi.getAllMember + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+          if (status) {
+            setListMember(data.data)
+          }
+        })
+      }
+    })
+  }
+
+  const overlay = (data) => (
+    <Menu>
+      <Menu.Item key="0">
+        <div onClick={() => handleDeleteMember(data.idUsers)}>Delete</div>
+      </Menu.Item>
+    </Menu>
+  )
+
+  const data = listMember.map((value) => {
+    return (
+      <div className={classes.itemList}>
+        <div className={classes.member}>
+          <Avatar src={value.avatar}>K</Avatar>
+          <p className={classes.name}>{value.name}<i>{(value.isAdmin) ? ' (Admin)' : ''}</i></p>
+        </div>
+
+        {isOwner && value.isAdmin === 0 && <div className={classes.option}>
+          <Dropdown overlay={overlay(value)} placement="bottomRight" trigger={['click']} arrow>
+            <img width={18} height={18} src={optionImg} alt="option"/>
+          </Dropdown>
+        </div>}
+      </div>
+    )
+  })
+
+  useEffect(() => {
+    FetchApi(GroupApi.checkOwnerGroups + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+      if (status) {
+        setIsOwner(true)
+      }
+    })
+
+    FetchApi(GroupApi.getAllMember + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+      if (status) {
+        setListMember(data.data)
+      }
+    })
+  }, [idGroups])
+
+  const handleOk = (data) => {
+    FetchApi(GroupApi.addMember, 'PUT', {
+      email: data.emailMember,
+    }, (status, data) => {
+      if (status) {
+        FetchApi(GroupApi.getAllMember + '/' + props.match.params.idGroups, 'GET', null, (status, data) => {
+          if (status) {
+            console.log(data.data)
+          }
+        })
+      }
+    })
+  }
 
   return (
     <div>
-      <div>
+      {isOwner && <div>
         <Divider orientation="left">Add members</Divider>
-        <Form name={'add-member-form'} layout={'inline'}>
+        <Form onFinish={handleOk} name={'add-member-form'} layout={'inline'}>
           <Form.Item
-            name="Email member"
+            name="emailMember"
             rules={[{required: true}]}
-
           >
             <Input
               placeholder="Email members"
@@ -35,7 +104,7 @@ const MemberSetting = props => {
             }}>Add</Button>
           </Form.Item>
         </Form>
-      </div>
+      </div>}
       <div>
         <Divider orientation="left">List members</Divider>
         <List

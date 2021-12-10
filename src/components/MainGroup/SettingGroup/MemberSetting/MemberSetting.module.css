@@ -1,0 +1,28 @@
+.itemList {
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+    width           : 100%;
+}
+
+.member {
+    display     : flex;
+    align-items : center;
+    margin      : 8px 0;
+}
+
+.name {
+    margin : 0 14px;
+}
+
+.option > img {
+    background-color: #f8f8f8;
+    padding: 3px;
+
+    border-radius: 10em;
+    border-style: solid;
+    border-color: #bdbdbd;
+    border-width: 1px;
+
+    cursor: pointer;
+}

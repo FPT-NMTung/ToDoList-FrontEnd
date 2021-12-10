@@ -14,11 +14,16 @@ export const UserApi = {
 export const GroupApi = {
   create: '/api/group/create',
   getInfo: '/api/group/getInfo',
+  checkOwnerGroups: '/api/group/check-owner-groups',
   getAllGroups: '/api/group/getAllGroups',
+  getAllMember: '/api/group/getAllMember',
   delete: '/api/group/delete',
+  addMember: '/api/group/addMember',
+  deleteMember: '/api/group/removeMember',
 }
 
 export const TaskApi = {
   create: '/api/task/create',
   getAllTasks: '/api/task/getAllTasks',
+  getAllTasksForAdmin: '/api/task/get-all-tasks-for-admin',
 }

@@ -97,7 +97,7 @@ const Login = props => {
             placeholder={'Enter your email'}
             onChange={handleEmailInput}
             onBlur={touchEmailInput}
-            className={(!isValidEmail) ? `${classesLogin.invalid}` : ''}
+            className={(!isValidEmail) ? `${classesLogin.invalid} ${classes.input}` : `${classes.input}`}
           /><br/>
           {!isValidEmail && <p className={classesLogin.invalidText}>Wrong email format.</p>}
           <input
@@ -106,7 +106,7 @@ const Login = props => {
             placeholder={'Enter your password'}
             onChange={handlePassInput}
             onBlur={touchPasswordInput}
-            className={(!isValidPassword) ? `${classesLogin.invalid}` : ''}
+            className={(!isValidPassword) ? `${classesLogin.invalid} ${classes.input}` : `${classes.input}`}
           /><br/>
           {!isValidPassword && <p className={classesLogin.invalidText}>Password from 8 to 50 characters.</p>}
           <div className={classesLogin.containButton}>

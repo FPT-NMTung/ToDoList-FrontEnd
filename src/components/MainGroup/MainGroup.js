@@ -37,13 +37,31 @@ const MainGroup = props => {
 
     FetchApi(GroupApi.getInfo + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
       if (status) {
-        FetchApi(TaskApi.getAllTasks + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+        FetchApi(GroupApi.checkOwnerGroups + '/' + idGroups, 'GET', 'application/json', undefined, (status) => {
           if (status) {
-            setListTasks(data.data)
-            setIsLoading(false)
+            FetchApi(TaskApi.getAllTasksForAdmin + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+              if (status) {
+                setListTasks(data.data)
+                setIsLoading(false)
+
+                setNumberTask(data.data.filter((e) => !e.isCompleted).length)
+              } else {
+                //show alert error
+                alert('error get data tasks')
+              }
+            })
           } else {
-            //show alert error
-            alert('error get data tasks')
+            FetchApi(TaskApi.getAllTasks + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+              if (status) {
+                setListTasks(data.data)
+                setIsLoading(false)
+
+                setNumberTask(data.data.filter((e) => !e.isCompleted).length)
+              } else {
+                //show alert error
+                alert('error get data tasks')
+              }
+            })
           }
         })
       } else {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import FetchApi from '../../../apis/FetchApi'
-import { GroupApi } from '../../../apis/ListApis'
+import { GroupApi} from '../../../apis/ListApis'
 import { Link, useHistory } from 'react-router-dom'
 import classes from './SettingGroup.module.css'
 import { HomeOutlined, LeftCircleOutlined, TeamOutlined } from '@ant-design/icons'
@@ -10,7 +10,8 @@ import MemberSetting from './MemberSetting/MemberSetting'
 
 const SettingGroup = (props) => {
   const history = useHistory()
-  const [activeKey, setActiveKey] = useState('1')
+  const [activeKey, setActiveKey] = useState('0')
+  const [isOwner, setIsOwner] = useState(false)
 
   useEffect(() => {
     const idGroups = props.match.params.idGroups
@@ -18,6 +19,15 @@ const SettingGroup = (props) => {
     FetchApi(GroupApi.getInfo + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
       if (!status) {
         history.push('/')
+      }
+    })
+
+    FetchApi(GroupApi.checkOwnerGroups + '/' + idGroups, 'GET', 'application/json', undefined, (status, data) => {
+      if (status) {
+        setIsOwner(true)
+        setActiveKey('1')
+      } else {
+        setActiveKey('2')
       }
     })
     // eslint-disable-next-line
@@ -52,12 +62,13 @@ const SettingGroup = (props) => {
         <Menu
           mode={'vertical'}
           defaultSelectedKeys={['1']}
+          selectedKeys={[activeKey]}
           style={{height: '100%'}}
           onClick={handleClickMenu}
         >
-          <Menu.Item key="1" icon={<HomeOutlined/>}>
+          {isOwner && <Menu.Item key="1" icon={<HomeOutlined/>}>
             General
-          </Menu.Item>
+          </Menu.Item>}
           <Menu.Item key="2" icon={<TeamOutlined/>}>
             Member
           </Menu.Item>
